@@ -75,11 +75,13 @@ export default function DayPhase() {
         }`}>
           <p className="text-xs sm:text-sm text-[#94a1b2] mb-2">🔍 Your private investigation notes:</p>
           <p className={`font-bold text-sm sm:text-base ${
-            nightResults.investigated.isMafia ? 'text-[#e53170]' : 'text-[#2cb67d]'
+            nightResults.investigated.targetDied ? 'text-[#ff8906]' : nightResults.investigated.isMafia ? 'text-[#e53170]' : 'text-[#2cb67d]'
           }`}>
-            {nightResults.investigated.isMafia 
-              ? `🎯 Your instincts are sharp! You are thinking in the exact right direction about ${nightResults.investigated.playerName}...` 
-              : `🕵️‍♂️ You spent all night spying on ${nightResults.investigated.playerName}, but they just aggressively ate a midnight snack and went back to bed. Completely innocent!`}
+            {nightResults.investigated.targetDied
+              ? `⚖️ Sheriff could not do anything as always law is blind "Kanoon andha hai judge shaab". Your target was murdered!`
+              : nightResults.investigated.isMafia 
+                ? `🎯 Your instincts are sharp! You are thinking in the exact right direction about ${nightResults.investigated.playerName}...` 
+                : `🕵️‍♂️ You spent all night spying on ${nightResults.investigated.playerName}, but they just aggressively ate a midnight snack and went back to bed. Completely innocent!`}
           </p>
         </div>
       )}

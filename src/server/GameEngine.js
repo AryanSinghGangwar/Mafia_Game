@@ -91,7 +91,8 @@ class GameEngine {
       // Doctor can protect anyone including self
     }
     if (player.role === 'sheriff') {
-      // Sheriff can investigate anyone
+      // Sheriff can investigate anyone except themselves
+      if (targetId === playerId) return false;
     }
     if (player.role === 'villager') {
       // Villagers tap themselves (or another dummy target) just to blend in
@@ -169,7 +170,8 @@ class GameEngine {
         results.investigated = {
           playerId: sheriffAction.targetId,
           playerName: investigated.name,
-          isMafia: investigated.role === 'mafia'
+          isMafia: investigated.role === 'mafia',
+          targetDied: !investigated.isAlive
         };
         // Find the sheriff to send them the result
         const sheriff = room.players.find(p => p.role === 'sheriff' && p.isAlive);

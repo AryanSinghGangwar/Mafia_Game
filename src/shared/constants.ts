@@ -53,7 +53,7 @@ export const ROLE_INFO: Record<string, { name: string; alignment: string; emoji:
     alignment: 'Town',
     emoji: '🔍',
     description: 'Investigate one player each night to learn if they are Mafia.',
-    nightAction: 'Choose a player to investigate',
+    nightAction: 'Choose someone else to investigate',
   },
 };
 

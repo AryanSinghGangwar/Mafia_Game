@@ -24,6 +24,7 @@ export default function NightPhase() {
     if (!p.isAlive) return false;
     if (role === 'mafia' && p.role === 'mafia') return false; // Can't target fellow mafia
     if (role === 'villager' && p.id !== playerId) return false; // Villagers can only tap themselves
+    if (role === 'sheriff' && p.id === playerId) return false; // Sheriff cannot investigate themselves
     return true;
   });
 
